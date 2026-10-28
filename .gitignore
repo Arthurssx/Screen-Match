@@ -1,0 +1,3 @@
+# Arquivos gerados ao compilar o projeto Java
+/out/
+*.class
