@@ -1,3 +1,7 @@
+package io.arthurssx.github.calculos;
+
+import io.arthurssx.github.modelos.Titulo;
+
 public class CalculadoraDeTempo {
     private int tempoTotal;
 

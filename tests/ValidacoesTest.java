@@ -23,7 +23,7 @@ public class ValidacoesTest {
                 serie::setEpisodiosPorTemporada, serie::getEpisodiosPorTemporada, 12));
         executa("minutos por episodio", () -> testaNaoNegativo(
                 serie::setMinutosPorEpisodio, serie::getMinutosPorEpisodio, 45));
-        executa("duracao herdada de Serie", ValidacoesTest::testaDuracaoHerdadaDeSerie);
+        executa("duracao herdada de io.arthurssx.github.modelos.Serie", ValidacoesTest::testaDuracaoHerdadaDeSerie);
         executa("maratona", ValidacoesTest::testaMaratona);
         System.out.println(verificacoes + " verificacoes, " + falhas + " falhas.");
         if (falhas > 0) {

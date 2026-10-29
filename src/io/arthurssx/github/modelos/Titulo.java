@@ -1,3 +1,5 @@
+package io.arthurssx.github.modelos;
+
 public class Titulo {
     private String nome;
     private int anoDeLancamento;

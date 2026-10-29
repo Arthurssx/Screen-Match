@@ -1,3 +1,5 @@
+package io.arthurssx.github.modelos;
+
 public class Serie extends Titulo {
     private int episodiosPorTemporada;
     private int temporadas;

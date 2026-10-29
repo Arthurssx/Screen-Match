@@ -1,3 +1,9 @@
+import io.arthurssx.github.calculos.CalculadoraDeTempo;
+import io.arthurssx.github.Requisitos.FiltroRecomendacao;
+import io.arthurssx.github.modelos.Episodio;
+import io.arthurssx.github.modelos.Filme;
+import io.arthurssx.github.modelos.Serie;
+
 public class Principal {
     public static void main(String[] args) {
         Filme meuFilme = new Filme();
@@ -38,5 +44,13 @@ public class Principal {
         calculadoraDeTempo.tempoTotal(meuFilme);
         calculadoraDeTempo.tempoTotal(serie);
         System.out.println("tempo total para maratonar tudo: " + calculadoraDeTempo.getTempoTotal());
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(meuFilme);
+        Episodio episodio = new Episodio();
+        episodio.setNumero(2);
+        episodio.setSerie(serie);
+        episodio.setTotalVizualizacoes(300);
+        filtro.filtra(episodio);
     }
 }
