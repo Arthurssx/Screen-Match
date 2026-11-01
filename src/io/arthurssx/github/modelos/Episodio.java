@@ -12,6 +12,9 @@ public class Episodio implements Classificavel {
     }
 
     public void setNumero(int numero) {
+        if (numero < 0) {
+            throw new IllegalArgumentException("O número do episódio não pode ser negativo.");
+        }
         this.numero = numero;
     }
 
@@ -36,6 +39,9 @@ public class Episodio implements Classificavel {
     }
 
     public void setTotalVizualizacoes(int totalVizualizacoes) {
+        if (totalVizualizacoes < 0) {
+            throw new IllegalArgumentException("O total de visualizações não pode ser negativo.");
+        }
         this.totalVizualizacoes = totalVizualizacoes;
     }
 

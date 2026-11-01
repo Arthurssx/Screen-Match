@@ -4,9 +4,13 @@ public class FiltroRecomendacao {
     private String recomendacao;
 
     public void filtra(Classificavel classificavel) {
-        if (classificavel.getClassificacao() >= 4) {
+        int classificacao = classificavel.getClassificacao();
+
+        if (classificacao == -1) {
+            System.out.println("Sem avaliações");
+        } else if (classificacao >= 4) {
             System.out.println("Está entre os preferidos");
-        } else if (classificavel.getClassificacao() >= 2) {
+        } else if (classificacao >= 2) {
             System.out.println("Bem avaliado");
         }
         else {

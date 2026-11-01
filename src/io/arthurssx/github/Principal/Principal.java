@@ -1,15 +1,17 @@
+package io.arthurssx.github.Principal;
+
 import io.arthurssx.github.calculos.CalculadoraDeTempo;
 import io.arthurssx.github.Requisitos.FiltroRecomendacao;
 import io.arthurssx.github.modelos.Episodio;
 import io.arthurssx.github.modelos.Filme;
 import io.arthurssx.github.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
+        Filme meuFilme = new Filme("O poderoso chefão", 1970);
 
-        meuFilme.setNome("O poderoso chefão");
-        meuFilme.setAnoDeLancamento(1970);
         meuFilme.setDuracaoEmMinutos(180);
         meuFilme.setIncluidoNoPlano(true);
 
@@ -22,10 +24,8 @@ public class Principal {
         System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
         System.out.println("Média: " + meuFilme.pegaMediaFormatada());
 
-        Serie serie = new Serie();
+        Serie serie = new Serie("Dr House", 2002);
 
-        serie.setNome ("Dr House");
-        serie.setAnoDeLancamento(2002);
         serie.setTemporadas(7);
         serie.setEpisodiosPorTemporada(12);
         serie.setMinutosPorEpisodio(45);
@@ -52,5 +52,20 @@ public class Principal {
         episodio.setSerie(serie);
         episodio.setTotalVizualizacoes(300);
         filtro.filtra(episodio);
+
+        Filme filmeJulia = new Filme("Snoppy", 2010);
+        filmeJulia.setDuracaoEmMinutos(140);
+        filmeJulia.setIncluidoNoPlano(true);
+        filmeJulia.avalia(8);
+        filmeJulia.avalia(10);
+
+        ArrayList<Filme> listaFilmes = new ArrayList<>();
+        listaFilmes.add(meuFilme);
+        listaFilmes.add(filmeJulia);
+
+        System.out.println("Total de filmes: " + listaFilmes.size());
+        System.out.println("Primeiro filme: " + listaFilmes.get(0).getNome() + " (" + listaFilmes.get(0).getAnoDeLancamento() + ")");
+        System.out.println(listaFilmes);
+
     }
 }
