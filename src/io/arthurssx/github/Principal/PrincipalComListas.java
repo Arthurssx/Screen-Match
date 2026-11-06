@@ -23,7 +23,7 @@ public class PrincipalComListas {
         lista.add(filmeJulia);
         lista.add(serie);
 
-        for (Titulo item: lista) {
+        for (Titulo item : lista) {
             System.out.println("Nome: " + item.getNome());
             if (item instanceof Filme filme && filme.getClassificacao() > 2) {
                 System.out.println("Classificação: " + filme.getClassificacao());

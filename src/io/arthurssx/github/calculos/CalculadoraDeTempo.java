@@ -9,7 +9,7 @@ public class CalculadoraDeTempo {
         return tempoTotal;
     }
 
-    public void tempoTotal(Titulo titulo){
+    public void tempoTotal(Titulo titulo) {
         tempoTotal += titulo.getDuracaoEmMinutos();
     }
 }

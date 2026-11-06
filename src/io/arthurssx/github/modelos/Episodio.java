@@ -7,6 +7,7 @@ public class Episodio implements Classificavel {
     private String nome;
     private Serie serie;
     private int totalVizualizacoes;
+
     public int getNumero() {
         return numero;
     }
@@ -47,7 +48,7 @@ public class Episodio implements Classificavel {
 
     @Override
     public int getClassificacao() {
-        if(totalVizualizacoes > 100){
+        if (totalVizualizacoes > 100) {
             return 4;
         }
         return 2;

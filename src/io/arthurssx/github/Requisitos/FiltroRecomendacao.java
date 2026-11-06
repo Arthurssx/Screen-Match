@@ -1,8 +1,6 @@
 package io.arthurssx.github.Requisitos;
 
 public class FiltroRecomendacao {
-    private String recomendacao;
-
     public void filtra(Classificavel classificavel) {
         int classificacao = classificavel.getClassificacao();
 
@@ -12,8 +10,7 @@ public class FiltroRecomendacao {
             System.out.println("Está entre os preferidos");
         } else if (classificacao >= 2) {
             System.out.println("Bem avaliado");
-        }
-        else {
+        } else {
             System.out.println("Não está entre os mais assistidos");
         }
     }

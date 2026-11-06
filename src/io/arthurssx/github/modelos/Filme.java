@@ -3,7 +3,7 @@ package io.arthurssx.github.modelos;
 import io.arthurssx.github.Requisitos.Classificavel;
 
 public class Filme extends Titulo implements Classificavel {
-   private String diretor;
+    private String diretor;
 
     public Filme(String nome, int anoDeLancamento) {
         super(nome, anoDeLancamento);

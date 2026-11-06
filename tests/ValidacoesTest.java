@@ -24,7 +24,7 @@ public class ValidacoesTest {
         for (double nota : invalidas) {
             executa("nota " + nota, () -> testaNotaInvalida(nota));
         }
-        for (Titulo titulo : new Titulo[]{new Titulo(), new Filme()}) {
+        for (Titulo titulo : new Titulo[]{new Titulo("Título de teste", 2024), new Filme("Filme de teste", 2024)}) {
             executa("duracao de " + titulo.getClass().getSimpleName(), () ->
                     testaNaoNegativo(titulo::setDuracaoEmMinutos, titulo::getDuracaoEmMinutos, 180));
         }
@@ -34,10 +34,10 @@ public class ValidacoesTest {
                 serie::setEpisodiosPorTemporada, serie::getEpisodiosPorTemporada, 12));
         executa("minutos por episodio", () -> testaNaoNegativo(
                 serie::setMinutosPorEpisodio, serie::getMinutosPorEpisodio, 45));
-        executa("duracao herdada de io.arthurssx.github.modelos.Serie", ValidacoesTest::testaDuracaoHerdadaDeSerie);
+        executa("duracao herdada de Serie", ValidacoesTest::testaDuracaoHerdadaDeSerie);
         executa("maratona", ValidacoesTest::testaMaratona);
         executa("filme sem avaliacoes", ValidacoesTest::testaFilmeSemAvaliacoes);
-        executa("filtro sem avaliacoes", () -> verificaRecomendacao(new Filme(), "Sem avaliações"));
+        executa("filtro sem avaliacoes", () -> verificaRecomendacao(new Filme("Filme de teste", 2024), "Sem avaliações"));
         executa("recomendacoes", ValidacoesTest::testaRecomendacoes);
         Episodio episodio = new Episodio();
         executa("numero do episodio", () -> testaNaoNegativo(episodio::setNumero, episodio::getNumero, 2));
@@ -51,20 +51,20 @@ public class ValidacoesTest {
     }
 
     private static void testaSemAvaliacoes() {
-        Titulo titulo = new Titulo();
+        Titulo titulo = new Titulo("Título de teste", 2024);
         verifica("Sem avaliações".equals(titulo.pegaMediaFormatada()), "mensagem sem avaliacoes");
         esperaExcecao(IllegalStateException.class, () -> titulo.pegaMedia());
         igual(0, titulo.getTotalDeAvaliacoes(), "consulta nao cria avaliacoes");
     }
 
     private static void testaNotasValidas() {
-        Titulo titulo = new Titulo();
+        Titulo titulo = new Titulo("Título de teste", 2024);
         titulo.avalia(0);
         titulo.avalia(10);
         titulo.avalia(8.0);
         igual(3, titulo.getTotalDeAvaliacoes(), "aceita 0, 10 e 8.0");
         igual(6.0, titulo.pegaMedia(), "media das notas validas");
-        Titulo fracionaria = new Titulo();
+        Titulo fracionaria = new Titulo("Título de teste", 2024);
         fracionaria.avalia(8);
         fracionaria.avalia(5);
         fracionaria.avalia(10);
@@ -72,7 +72,7 @@ public class ValidacoesTest {
     }
 
     private static void testaNotaInvalida(double nota) {
-        Titulo titulo = new Titulo();
+        Titulo titulo = new Titulo("Título de teste", 2024);
         titulo.avalia(8);
         titulo.avalia(6);
         esperaExcecao(IllegalArgumentException.class, () -> titulo.avalia(nota));
@@ -102,7 +102,7 @@ public class ValidacoesTest {
 
     private static void testaMaratona() {
         Serie serie = novaSerie();
-        Filme filme = new Filme();
+        Filme filme = new Filme("Filme de teste", 2024);
         filme.setDuracaoEmMinutos(180);
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         igual(3780, serie.getDuracaoEmMinutos(), "serie 7 x 12 x 45");
@@ -113,22 +113,22 @@ public class ValidacoesTest {
     }
 
     private static void testaFilmeSemAvaliacoes() {
-        Filme filme = new Filme();
+        Filme filme = new Filme("Filme de teste", 2024);
         igual(-1, filme.getClassificacao(), "filme sem notas ainda nao tem classificacao");
         igual(0, filme.getTotalDeAvaliacoes(), "classificar nao registra uma nota");
     }
 
     private static void testaRecomendacoes() {
-        Filme filme = new Filme();
+        Filme filme = new Filme("Filme de teste", 2024);
         filme.avalia(0);
         igual(0, filme.getClassificacao(), "nota zero e diferente de ausencia de notas");
         verificaRecomendacao(filme, "Não está entre os mais assistidos");
 
-        Filme bemAvaliado = new Filme();
+        Filme bemAvaliado = new Filme("Filme bem avaliado", 2024);
         bemAvaliado.avalia(6);
         verificaRecomendacao(bemAvaliado, "Bem avaliado");
 
-        Filme preferido = new Filme();
+        Filme preferido = new Filme("Filme preferido", 2024);
         preferido.avalia(8);
         verificaRecomendacao(preferido, "Está entre os preferidos");
     }
@@ -156,7 +156,7 @@ public class ValidacoesTest {
     }
 
     private static Serie novaSerie() {
-        Serie serie = new Serie();
+        Serie serie = new Serie("Série de teste", 2024);
         serie.setTemporadas(7);
         serie.setEpisodiosPorTemporada(12);
         serie.setMinutosPorEpisodio(45);

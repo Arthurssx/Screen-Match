@@ -1,7 +1,7 @@
 package io.arthurssx.github.Principal;
 
-import io.arthurssx.github.calculos.CalculadoraDeTempo;
 import io.arthurssx.github.Requisitos.FiltroRecomendacao;
+import io.arthurssx.github.calculos.CalculadoraDeTempo;
 import io.arthurssx.github.modelos.Episodio;
 import io.arthurssx.github.modelos.Filme;
 import io.arthurssx.github.modelos.Serie;
@@ -66,6 +66,5 @@ public class Principal {
         System.out.println("Total de filmes: " + listaFilmes.size());
         System.out.println("Primeiro filme: " + listaFilmes.get(0).getNome() + " (" + listaFilmes.get(0).getAnoDeLancamento() + ")");
         System.out.println(listaFilmes);
-
     }
 }
